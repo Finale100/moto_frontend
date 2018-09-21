@@ -2,6 +2,24 @@ import React from 'react'
 import { Header, Image, Table, Grid } from 'semantic-ui-react'
 
 export default class Leaderboard extends React.Component {
+  state = {
+    allRiders: []
+  }
+
+  fetchRiders = () => {
+    fetch('http://localhost:3000/riders')
+    .then(response => response.json())
+    .then(riders => {
+      this.setState({
+        allRiders: riders
+      })
+    })
+  }
+
+  componentDidMount = () => {
+    this.fetchRiders()
+  }
+
   render() {
     return (
     <Grid.Column width={6} >
@@ -14,56 +32,22 @@ export default class Leaderboard extends React.Component {
             <Table.HeaderCell>Points</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
-      <Table.Body>
-        <Table.Row>
-          <Table.Cell>
-            <Header as='h4' image>
-              <Image src='https://react.semantic-ui.com/images/avatar/small/lena.png' rounded size='mini' />
-              <Header.Content>
-                Lena
-                <Header.Subheader>Human Resources</Header.Subheader>
-              </Header.Content>
-            </Header>
-          </Table.Cell>
-          <Table.Cell>22</Table.Cell>
-        </Table.Row>
-        {/* <Table.Row>
-          <Table.Cell>
-            <Header as='h4' image>
-              <Image src='https://react.semantic-ui.com/images/avatar/small/matthew.png' rounded size='mini' />
-              <Header.Content>
-                Matthew
-                  <Header.Subheader>Fabric Design</Header.Subheader>
-                </Header.Content>
-              </Header>
-            </Table.Cell>
-          <Table.Cell>15</Table.Cell>
-        </Table.Row>
-        <Table.Row>
-      <Table.Cell>
-        <Header as='h4' image>
-          <Image src='https://react.semantic-ui.com/images/avatar/small/lindsay.png' rounded size='mini' />
-          <Header.Content>
-            Lindsay
-            <Header.Subheader>Entertainment</Header.Subheader>
-          </Header.Content>
-        </Header>
-      </Table.Cell>
-      <Table.Cell>12</Table.Cell>
-    </Table.Row>
-    <Table.Row>
-      <Table.Cell>
-        <Header as='h4' image>
-          <Image src='https://react.semantic-ui.com/images/avatar/small/mark.png' rounded size='mini' />
-          <Header.Content>
-            Mark
-            <Header.Subheader>Executive</Header.Subheader>
-          </Header.Content>
-        </Header>
-      </Table.Cell>
-      <Table.Cell>11</Table.Cell>
-    </Table.Row> */}
-  </Table.Body>
+        {this.state.allRiders.slice(0, 10).map(rider => {
+          return <Table.Body>
+                   <Table.Row>
+                     <Table.Cell>
+                       <Header as='h4' image>
+                        <Header.Content>
+                          {rider['name'].split(',')[0]}
+                         <Header.Subheader>{rider['team']}</Header.Subheader>
+                        </Header.Content>
+                       </Header>
+                     </Table.Cell>
+                    <Table.Cell>{rider['points']}</Table.Cell>
+                  </Table.Row>
+                </Table.Body>
+                })}
+
 </Table>
 </Grid.Column>
 
