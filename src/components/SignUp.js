@@ -1,5 +1,6 @@
 import React from 'react'
-import { Button, Checkbox, Form, TextArea, Icon } from 'semantic-ui-react'
+import { Button, Checkbox, Form, TextArea, Icon, Modal } from 'semantic-ui-react'
+import Login from './LogIn'
 
 export default class SignUp extends React.Component {
   state = {
@@ -10,7 +11,8 @@ export default class SignUp extends React.Component {
     img: "",
     password: "",
     about: "",
-    username: ""
+    username: "",
+    loggedIn: null
   }
 
   changeHandler = (value, key) => {
@@ -23,9 +25,10 @@ export default class SignUp extends React.Component {
     fetch('http://localhost:3000/users', {
       method: 'POST',
       headers: {
-      "Content-Type": "application/json"
+      "Content-Type": "application/json",
+      "Accept": "application/json"
       },
-      body: JSON.stringify({
+      body: JSON.stringify({user:{
         name: this.state.name,
         about: this.state.about,
         location: this.state.location,
@@ -34,8 +37,9 @@ export default class SignUp extends React.Component {
         password: this.state.password,
         username: this.state.username,
         img: this.state.img
-      })
-    })
+      }})
+    }).then(r => r.json())
+    .then(json => console.log(json))
     e.currentTarget.form.reset()
     alert("You have Sucessfully Registered!")
   }
@@ -45,7 +49,14 @@ export default class SignUp extends React.Component {
       <React.Fragment>
         <br/>
         <h1>Register</h1>
-        <h5><font color="blue">Already A Member?</font> <Icon name='sign-in' ></Icon></h5>
+        <h5><font color="blue">Already A Member?</font> <Modal
+          trigger={<Icon name='sign-in' ></Icon>}
+          open={this.state.modalOpen}
+          onClose={this.handleClose}
+          basic
+                                                        size='small'>
+          <Login/>
+        </Modal></h5>
         <br/>
         <Form size='small'>
           <Form.Field>

@@ -6,7 +6,7 @@ export default class NavBar extends React.Component {
   render() {
     return (
       <Menu pointing secondary>
-        <Menu.Item name='Moto Moto'/>
+        <Menu.Item name='Moto Moto' position='center'/>
         <Menu.Item
           name='home'
           active={this.props.activeItem === 'home'}
@@ -27,7 +27,14 @@ export default class NavBar extends React.Component {
           to='/riders'
           onClick={this.props.handleItemClick}
         />
-        <Menu.Menu position='right'>
+        <Menu.Item position="right"
+          name='Login'
+          active={this.props.activeItem === 'Login'}
+          as={NavLink}
+          to='/login'
+          onClick={this.props.handleItemClick}
+        />
+        <Menu.Menu >
           <Menu.Item
             name='Register'
             active={this.props.activeItem === 'Register'}
