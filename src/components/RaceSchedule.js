@@ -1,5 +1,6 @@
 import React from 'react'
 import { Grid, Menu, Segment } from 'semantic-ui-react'
+import {NavLink} from 'react-router-dom'
 
 class RaceSchedule extends React.Component {
 
@@ -14,12 +15,14 @@ class RaceSchedule extends React.Component {
           <Menu fluid vertical tabular>
             <Menu.Item
               name='RACE SEASON'
-              active={activeItem === this.props.selectedRace}
+              active={activeItem === this.props.activeRace}
               onClick={this.handleItemClick} />
-              <br/>
-              {this.props.races.map(race => {
-                return  <Menu.Item name={race['name']}
-                  onClick={(e) => this.handleItemClick(e)}/>})}
+            <br/>
+            {this.props.races.map(race => {
+              return  <Menu.Item
+                name={race['name']}
+                active={this.props.activeRace === race['name']}
+                onClick={(e) => this.handleItemClick(e)}/>})}
           </Menu>
     )
   }

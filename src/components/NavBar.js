@@ -29,8 +29,10 @@ export default class NavBar extends React.Component {
         />
         <Menu.Menu position='right'>
           <Menu.Item
-            name='Sign Up'
-            active={this.props.activeItem === 'Sign Up'}
+            name='Register'
+            active={this.props.activeItem === 'Register'}
+            as={NavLink}
+            to='/register'
             onClick={this.props.handleItemClick}
           />
         </Menu.Menu>

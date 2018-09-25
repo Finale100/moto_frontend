@@ -1,14 +1,13 @@
 import React from 'react'
-import Event from '../components/Event'
+import Riders from '../components/Riders'
 import { Grid } from 'semantic-ui-react'
 
-
-export default class EventContainer extends React.Component {
+export default class RidesContainer extends React.Component {
   render() {
-    return(
+    return (
       <Grid>
         <Grid.Column width={16}>
-          <Event/>
+          <Riders/>
         </Grid.Column>
       </Grid>
     )

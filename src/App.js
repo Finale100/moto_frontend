@@ -8,8 +8,9 @@ import Leaderboard from './components/Leaderboard'
 import NavBar from './components/NavBar'
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import HomeContainer from './containers/HomeContainer'
-import Event from './components/Event'
-
+import EventContainer from './containers/EventContainer'
+import RidersContainer from './containers/RidersContainer'
+import SignUp from './components/SignUp'
 
 
 class App extends Component {
@@ -17,7 +18,8 @@ class App extends Component {
     activeItem: null,
     allRaces: [],
     selectedRace: null,
-    allRiders: []
+    allRiders: [],
+    activeRace: null
   }
 
   selectedRace = (e) => {
@@ -46,6 +48,12 @@ class App extends Component {
     })
   }
 
+  menuBarRace = (e, {name}) => {
+    this.setState({
+      activeRace: name
+    })
+  }
+
 
   render() {
 
@@ -56,30 +64,21 @@ class App extends Component {
           <NavBar activeItem={this.state.activeItem} handleItemClick={this.handleItemClick}/>
           <Grid>
             <Grid.Column width={4}>
-              {this.state.allRaces.length === 19 ? <RaceSchedule races={this.state.allRaces} selectedRace={this.selectedRace}/> : null }
+              {this.state.allRaces.length === 19 ? <RaceSchedule races={this.state.allRaces} selectedRace={this.selectedRace}
+                activeRace={this.state.activeRace}
+                menuBarRace={this.menuBarRace}/> : null }
             </Grid.Column>
-            <Grid.Column width={11}>
+            <Grid.Column width={12}>
               <Route exact path='/' component={HomeContainer}/>
-              <Route exact path='/events' component={Event}/>
-              <Route exact path='/riders'/>
-              <Route exact path='/signup'/>
+              <Route exact path='/events' component={EventContainer}/>
+              <Route exact path='/riders' component={RidersContainer}/>
+              <Route exact path='/register' component={SignUp}/>
             </Grid.Column>
           </Grid>
-          {/* <Grid>
-              <Grid.Column width={4}>
-              {this.state.allRaces.length === 19 ? <RaceSchedule races={this.state.allRaces} selectedRace={this.selectedRace}/> : null }
-              </Grid.Column>
-              <Grid.Column width={7}>
-              <FeaturedRace />
-              </Grid.Column>
-              <Grid.Column width={4} floated='right'>
-              <Leaderboard riders={this.state.allRiders}/>
-              </Grid.Column>
-            </Grid> */}
-            </React.Fragment>
-          </Router>
-          )
-          }
-          }
+        </React.Fragment>
+      </Router>
+    )
+  }
+}
 
 export default App;
