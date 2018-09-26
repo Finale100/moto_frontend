@@ -60,7 +60,7 @@ export default class Event extends React.Component {
     return(
       <React.Fragment>
         <br/>
-        <h1>Events   <span><EventForm newEvent={this.newEvent} createEvent={this.createEvent} modalOpen={this.state.modalOpen} handleClose={this.handleClose}/></span></h1>
+        <h1>Events   <span><EventForm newEvent={this.newEvent} createEvent={this.createEvent} modalOpen={this.state.modalOpen} handleClose={this.handleClose} user={this.props.user}/></span></h1>
         <br/>
         <br/>
         <br/>

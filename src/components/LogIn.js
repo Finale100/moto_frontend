@@ -14,18 +14,22 @@ export default class Login extends React.Component {
     })
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
   e.preventDefault()
-  fetch('http://localhost:3001/login', {
+  fetch('http://localhost:3000/login', {
     method: "POST",
     headers: {
       'Content-Type': 'application/json',
       'Accept': 'application/json'
     },
     body: JSON.stringify({
-      username: this.state.username,
-      password: this.state.password
+      username: e.target.elements[0].value,
+      password: e.target.elements[1].value
       })
+    }).then(r => r.json())
+    .then(json => {
+      this.props.updateUser(json.user)
+      localStorage.setItem('token', json.token)
     })
   }
 

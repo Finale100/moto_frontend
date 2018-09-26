@@ -19,7 +19,8 @@ class App extends Component {
     allRaces: [],
     selectedRace: null,
     allRiders: [],
-    activeRace: null
+    activeRace: null,
+    user: null
   }
 
   selectedRace = (e) => {
@@ -38,8 +39,22 @@ class App extends Component {
     })
   }
 
+  fetchUser = () => {
+
+    fetch('http://localhost:3000/profile', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem("token")}`
+      }
+    }).then(r => r.json())
+    .then(this.updateUser)
+  }
+
   componentDidMount = () => {
     this.fetchRaces()
+    if (localStorage.getItem('token')) {
+      this.fetchUser()
+    }
   }
 
   handleItemClick = (e, { name }) => {
@@ -54,12 +69,22 @@ class App extends Component {
     })
   }
 
+  updateUser = user => {
+    this.setState({ user })
+  }
+
+  handleLogout = () => {
+    this.setState({
+      user: null
+    })
+    localStorage.clear()
+  }
 
   render() {
     return (
       <Router>
         <React.Fragment>
-          <NavBar activeItem={this.state.activeItem} handleItemClick={this.handleItemClick}/>
+          <NavBar activeItem={this.state.activeItem} handleItemClick={this.handleItemClick} user={this.state.user} handleLogout={this.handleLogout}/>
           <Grid>
             <Grid.Column width={4}>
               {this.state.allRaces.length === 19 ? <RaceSchedule races={this.state.allRaces} selectedRace={this.selectedRace}
@@ -68,9 +93,10 @@ class App extends Component {
             </Grid.Column>
             <Grid.Column width={12}>
               <Route exact path='/' component={HomeContainer}/>
-              <Route exact path='/events' component={EventContainer}/>
+              <Route exact path='/events' render={() => <EventContainer user={this.state.user}/>}/>
               <Route exact path='/riders' component={RidersContainer}/>
-              <Route exact path='/register' component={SignUp}/>
+              <Route exact path='/register' render={() => <SignUp updateUser={this.updateUser}/>}/>
+              <Route exact path='/race/'/>
             </Grid.Column>
           </Grid>
         </React.Fragment>

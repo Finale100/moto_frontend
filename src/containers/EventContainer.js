@@ -8,7 +8,7 @@ export default class EventContainer extends React.Component {
     return(
       <Grid>
         <Grid.Column width={16}>
-          <Event/>
+          <Event user={this.props.user}/>
         </Grid.Column>
       </Grid>
     )

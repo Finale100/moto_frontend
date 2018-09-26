@@ -1,6 +1,6 @@
 import React from 'react'
 import { Button, Checkbox, Form, TextArea, Icon, Modal } from 'semantic-ui-react'
-import Login from './LogIn'
+import Login from './Login'
 
 export default class SignUp extends React.Component {
   state = {
@@ -55,7 +55,7 @@ export default class SignUp extends React.Component {
           onClose={this.handleClose}
           basic
                                                         size='small'>
-          <Login/>
+          <Login updateUser={this.props.updateUser}/>
         </Modal></h5>
         <br/>
         <Form size='small'>

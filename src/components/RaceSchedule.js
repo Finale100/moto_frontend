@@ -13,16 +13,16 @@ class RaceSchedule extends React.Component {
     const { activeItem } = this.props.selectedRace
     return (
           <Menu fluid vertical tabular>
-            <Menu.Item
-              name='RACE SEASON'
-              active={activeItem === this.props.activeRace}
-              onClick={this.handleItemClick} />
+            <Menu.Item name='RACE SEASON'/>
             <br/>
             {this.props.races.map(race => {
               return  <Menu.Item
                 name={race['name']}
-                active={this.props.activeRace === race['name']}
-                onClick={(e) => this.handleItemClick(e)}/>})}
+                active={this.props.selectedRace === race['name']}
+                onClick={(e) => this.handleItemClick(e)}
+                
+                      />
+            })}
           </Menu>
     )
   }
