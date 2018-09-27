@@ -8,7 +8,7 @@ import 'semantic-ui-css/semantic.min.css';
 // import { createStore } from 'redux'
 
 ReactDOM.render(
-  <Router>
-    <App />
-  </Router>,
+
+    <App />,
+
     document.getElementById('root'));

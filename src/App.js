@@ -11,7 +11,7 @@ import HomeContainer from './containers/HomeContainer'
 import EventContainer from './containers/EventContainer'
 import RidersContainer from './containers/RidersContainer'
 import SignUp from './components/SignUp'
-
+import Login from './components/Login'
 
 class App extends Component {
   state = {
@@ -40,7 +40,6 @@ class App extends Component {
   }
 
   fetchUser = () => {
-
     fetch('http://localhost:3000/profile', {
       method: 'GET',
       headers: {
@@ -84,7 +83,7 @@ class App extends Component {
     return (
       <Router>
         <React.Fragment>
-          <NavBar activeItem={this.state.activeItem} handleItemClick={this.handleItemClick} user={this.state.user} handleLogout={this.handleLogout}/>
+          <NavBar activeItem={this.state.activeItem} handleItemClick={this.handleItemClick} user={this.state.user} handleLogout={this.handleLogout} updateUser={this.updateUser} />
           <Grid>
             <Grid.Column width={4}>
               {this.state.allRaces.length === 19 ? <RaceSchedule races={this.state.allRaces} selectedRace={this.selectedRace}
@@ -96,7 +95,6 @@ class App extends Component {
               <Route exact path='/events' render={() => <EventContainer user={this.state.user}/>}/>
               <Route exact path='/riders' component={RidersContainer}/>
               <Route exact path='/register' render={() => <SignUp updateUser={this.updateUser}/>}/>
-              <Route exact path='/race/'/>
             </Grid.Column>
           </Grid>
         </React.Fragment>

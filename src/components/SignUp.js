@@ -1,8 +1,10 @@
 import React from 'react'
 import { Button, Checkbox, Form, TextArea, Icon, Modal } from 'semantic-ui-react'
 import Login from './Login'
+import { NavLink } from 'react-router-dom'
+import {withRouter} from 'react-router-dom'
 
-export default class SignUp extends React.Component {
+class SignUp extends React.Component {
   state = {
     name: "",
     location: "",
@@ -12,7 +14,8 @@ export default class SignUp extends React.Component {
     password: "",
     about: "",
     username: "",
-    loggedIn: null
+    loggedIn: null,
+    modalOpen: false
   }
 
   changeHandler = (value, key) => {
@@ -21,7 +24,8 @@ export default class SignUp extends React.Component {
     })
   }
 
-  register = (e) => {
+  register = (e, state ) => {
+    this.props.history.push("/")
     fetch('http://localhost:3000/users', {
       method: 'POST',
       headers: {
@@ -41,8 +45,21 @@ export default class SignUp extends React.Component {
     }).then(r => r.json())
     .then(json => console.log(json))
     e.currentTarget.form.reset()
+
     alert("You have Sucessfully Registered!")
   }
+
+    handleClose = () => {
+      this.setState({
+        modalOpen: false
+      })
+    }
+
+    openModal = () => {
+      this.setState({
+        modalOpen: true
+      })
+    }
 
   render() {
     return(
@@ -50,12 +67,13 @@ export default class SignUp extends React.Component {
         <br/>
         <h1>Register</h1>
         <h5><font color="blue">Already A Member?</font> <Modal
-          trigger={<Icon name='sign-in' ></Icon>}
+          trigger={<Icon name='sign-in' onClick={this.openModal} ></Icon>}
           open={this.state.modalOpen}
-          onClose={this.handleClose}
-          basic
-                                                        size='small'>
-          <Login updateUser={this.props.updateUser}/>
+          // onClose={this.handleClose}
+          as={NavLink}
+          to='/login'
+                                                        basic>
+          <Login updateUser={this.props.updateUser} handleClose={this.handleClose}/>
         </Modal></h5>
         <br/>
         <Form size='small'>
@@ -100,3 +118,5 @@ export default class SignUp extends React.Component {
     )
   }
 }
+
+export default withRouter(SignUp)

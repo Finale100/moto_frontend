@@ -1,7 +1,8 @@
 import React from 'react'
 import { Button, Header, Icon, Modal, Form } from 'semantic-ui-react'
+import {withRouter} from 'react-router-dom'
 
-export default class Login extends React.Component {
+class Login extends React.Component {
 
   state = {
     username: "",
@@ -16,6 +17,8 @@ export default class Login extends React.Component {
 
   handleSubmit = (e) => {
   e.preventDefault()
+  this.props.handleClose()
+  this.props.history.push("/")
   fetch('http://localhost:3000/login', {
     method: "POST",
     headers: {
@@ -44,10 +47,10 @@ export default class Login extends React.Component {
           </Form.Field>
           <Form.Field>
             <label><font color="white">Password:</font></label>
-            <input name='race' placeholder='Password' onChange={(e) => this.changeHandler(e.currentTarget.value, 'password')} />
+            <input type='password' name='race' placeholder='Password' onChange={(e) => this.changeHandler(e.currentTarget.value, 'password')} />
           </Form.Field>
           <Modal.Actions>
-            <Button color='green' onClick={this.handleClose} inverted>
+            <Button color='green'>
               <Icon name='checkmark' />Vroom Vroom
             </Button>
           </Modal.Actions>
@@ -56,3 +59,5 @@ export default class Login extends React.Component {
     )
   }
 }
+
+export default withRouter(Login)

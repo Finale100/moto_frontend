@@ -1,12 +1,29 @@
 import React from 'react'
 import {NavLink} from 'react-router-dom'
-import { Menu } from 'semantic-ui-react'
+import { Menu, Modal } from 'semantic-ui-react'
+import Login from './Login'
+import UserEditForm from './UserEditForm'
 
 export default class NavBar extends React.Component {
-
+state = {
+  modalOpen: false
+}
   logout = () => {
     this.props.handleLogout()
   }
+
+  handleClose = () => {
+    this.setState({
+      modalOpen: false
+    })
+  }
+
+  handleOpen = () => {
+    this.setState({
+      modalOpen: true
+    })
+  }
+
   render() {
     return (
       <React.Fragment>
@@ -32,23 +49,43 @@ export default class NavBar extends React.Component {
             to='/riders'
             onClick={this.props.handleItemClick}
           />
-          { this.props.user ? <Menu.Item position='right' name='Logout' onClick={this.logout}/> :
-          <React.Fragment>
-            <Menu.Item position="right"
-              name='Login'
-              active={this.props.activeItem === 'Login'}
-              as={NavLink}
-              to='/login'
-              onClick={this.props.handleItemClick}
-            />
-            <Menu.Item
-              name='Register'
-              active={this.props.activeItem === 'Register'}
-              as={NavLink}
-              to='/register'
-              onClick={this.props.handleItemClick}
-            />
-          </React.Fragment>}
+          { this.props.user ?
+            <React.Fragment>
+              <Modal
+                trigger={<Menu.Item position="right"
+                  name='Edit Account'
+                  active={this.props.activeItem === 'Edit Account'}
+                  // as={NavLink}
+                  to='/login'
+                  onClick={this.handleOpen}/>}
+                open={this.state.modalOpen}
+                onClose={this.handleClose}
+              basic>
+                <UserEditForm updateUser={this.props.updateUser} handleClose={this.handleClose} handleLogout={this.props.handleLogout} user={this.props.user}/>
+              </Modal>
+              <Menu.Item  name='Logout' onClick={this.logout}/>
+            </React.Fragment> :
+            <React.Fragment>
+              <Modal
+                trigger={<Menu.Item position="right"
+                  name='Login'
+                  active={this.props.activeItem === 'Login'}
+                  as={NavLink}
+                  to='/login'
+                  onClick={this.handleOpen}/>}
+                open={this.state.modalOpen}
+                onClose={this.handleClose}
+              basic>
+                <Login updateUser={this.props.updateUser} handleClose={this.handleClose}/>
+              </Modal>
+              <Menu.Item
+                name='Register'
+                active={this.props.activeItem === 'Register'}
+                as={NavLink}
+                to='/register'
+                onClick={this.props.handleItemClick}
+              />
+            </React.Fragment>}
         </Menu>
       </React.Fragment>
     )
