@@ -12,6 +12,8 @@ import EventContainer from './containers/EventContainer'
 import RidersContainer from './containers/RidersContainer'
 import SignUp from './components/SignUp'
 import Login from './components/Login'
+import MyEventsContainer from './containers/MyEventsContainer'
+import RaceDetail from './components/RaceDetail'
 
 class App extends Component {
   state = {
@@ -20,7 +22,8 @@ class App extends Component {
     selectedRace: null,
     allRiders: [],
     activeRace: null,
-    user: null
+    user: null,
+    myEvents: []
   }
 
   selectedRace = (e) => {
@@ -69,7 +72,36 @@ class App extends Component {
   }
 
   updateUser = user => {
-    this.setState({ user })
+    this.setState({
+      user: user,
+      myEvents: user.event
+    })
+  }
+
+  updateMyEvents = (event) => {
+    this.setState({
+      myEvents: [...this.state.myEvents, event]
+    })
+  }
+
+  leaveEvent = (event_id) => {
+    let newEvents = this.state.myEvents.filter(event => event.id !== event_id)
+    this.setState({
+      myEvents: newEvents
+    })
+    fetch('http://localhost:3000/delete_event',{
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: 'application/json',
+        'Authorization': `Bearer ${localStorage.getItem("token")}`
+      },
+      body: JSON.stringify({
+        user_id: this.state.user.id,
+        event_id: event_id
+      })
+    })
+    console.log('deleted')
   }
 
   handleLogout = () => {
@@ -92,9 +124,11 @@ class App extends Component {
             </Grid.Column>
             <Grid.Column width={12}>
               <Route exact path='/' component={HomeContainer}/>
-              <Route exact path='/events' render={() => <EventContainer user={this.state.user}/>}/>
+              <Route exact path='/events' render={() => <EventContainer user={this.state.user} updateMyEvents={this.updateMyEvents}/>}/>
               <Route exact path='/riders' component={RidersContainer}/>
               <Route exact path='/register' render={() => <SignUp updateUser={this.updateUser}/>}/>
+              <Route exact path='/myevents' render={() => <MyEventsContainer myEvents={this.state.myEvents} leaveEvent={this.leaveEvent}/>}/>
+              <Route exact path='/race/:id' render={(props) => <RaceDetail id={props.match.params.id} allRaces={this.state.allRaces} user={this.state.user}/>} />
             </Grid.Column>
           </Grid>
         </React.Fragment>

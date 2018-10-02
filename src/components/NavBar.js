@@ -3,13 +3,15 @@ import {NavLink} from 'react-router-dom'
 import { Menu, Modal } from 'semantic-ui-react'
 import Login from './Login'
 import UserEditForm from './UserEditForm'
+import {withRouter} from 'react-router-dom'
 
-export default class NavBar extends React.Component {
+class NavBar extends React.Component {
 state = {
   modalOpen: false
 }
   logout = () => {
     this.props.handleLogout()
+    this.props.history.push("/")
   }
 
   handleClose = () => {
@@ -63,6 +65,13 @@ state = {
               basic>
                 <UserEditForm updateUser={this.props.updateUser} handleClose={this.handleClose} handleLogout={this.props.handleLogout} user={this.props.user}/>
               </Modal>
+              <Menu.Item
+                name='My Events'
+                active={this.props.activeItem === 'My Events'}
+                as={NavLink}
+                to='/myevents'
+                onClick={this.props.handleItemClick}
+              />
               <Menu.Item  name='Logout' onClick={this.logout}/>
             </React.Fragment> :
             <React.Fragment>
@@ -91,3 +100,4 @@ state = {
     )
   }
 }
+export default withRouter(NavBar)

@@ -35,26 +35,29 @@ export default class EventForm extends React.Component {
           <Modal.Content>
             <Form onSubmit={this.handleSubmit}>
               <Form.Field>
-                <label>Event Name</label>
+                <input id='user' name='user_id' type='hidden' value={this.props.user.username}/>
+              </Form.Field>
+              <Form.Field>
+                <label>Event Name:</label>
                 <input name='event' placeholder='Event Name' onChange={(e) => this.changeHandler(e.currentTarget.value, 'event')} />
               </Form.Field>
               <Form.Field>
-                <label>Race</label>
+                <label>Race:</label>
                 <input name='race' placeholder='Race' onChange={(e) => this.changeHandler(e.currentTarget.value, 'race')} />
               </Form.Field>
               <Form.Field>
-                <label>Date</label>
+                <label>Date:</label>
                 <input name='date' placeholder='Date' onChange={(e) => this.changeHandler(e.currentTarget.value, 'date')}/>
               </Form.Field>
               <Form.Field>
-                <label>Location</label>
+                <label>Location:</label>
                 <input name='location' placeholder='Location' onChange={(e) => this.changeHandler(e.currentTarget.value, 'location')} />
               </Form.Field>
               <Form.Field>
-                <label>What To Bring</label>
+                <label>What To Bring:</label>
                 <input name='list' placeholder='What To Bring' onChange={(e) => this.changeHandler(e.currentTarget.value, 'list')}/>
               </Form.Field>
-              <Button type='submit' onClick={this.handleSubmit}>Submit</Button>
+              <Button type='submit' onClick={(e) => this.handleSubmit(e)}>Submit</Button>
             </Form>
           </Modal.Content>
         </Modal> : null}

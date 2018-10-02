@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, Checkbox, Form, TextArea, Icon, Modal, Grid } from 'semantic-ui-react'
+import { Button, Checkbox, Form, TextArea, Modal, Grid } from 'semantic-ui-react'
 
 export default class UserEditForm extends React.Component {
 
@@ -96,7 +96,7 @@ export default class UserEditForm extends React.Component {
           </Form.Field>
           <Button type='submit' color='blue' onClick={(e) => this.handleSubmit(e)}>Edit</Button>
           <Button type='delete' color='red' onClick={(e) => this.deleteUser(e)}>Delete 😢</Button>
-      </Form>
+        </Form>
       </React.Fragment>
     )
   }

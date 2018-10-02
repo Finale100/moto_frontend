@@ -26,3 +26,33 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.mierda {
+  text-align: center;
+}
+
+i.icon.check:before {
+    padding-left: 30px;
+}
+
+.pic {
+  height: auto;
+  max-width: 100%;
+  text-align: center;
+}
+
+.title {
+  padding-top: 30px;
+  margin-top: -30px;
+  padding-left: 50px;
+  background-position: center;
+  background-size: cover;
+  height: 100px;
+  text-align: left;
+  color: #FFF;
+  font-family: Palatino;
+  background-image: URL('https://www.mementoexclusives.com/images/detailed/9/motogp_memorabilia_category_banner.jpg');
+}
+.carousel .slide {
+  background: #FFF !important;
+}
