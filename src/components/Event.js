@@ -36,11 +36,10 @@ export default class Event extends React.Component {
       })
     }).then(r => r.json())
     .then(event => {
-      console.log(event)
       this.setState({
         allEvents: [...this.state.allEvents, event]
       })
-      this.createUserEvent(this.props.user.id, event.id)
+      this.createUserEvent(this.props.user.id, event.id, event)
     })
   }
 
@@ -75,11 +74,6 @@ export default class Event extends React.Component {
     })
   }
 
-  deleteEvent = (e) => {
-    e.preventDefault()
-
-    console.log(e)
-  }
 
   render(){
     return(
@@ -87,10 +81,11 @@ export default class Event extends React.Component {
         <br/>
         <h1>Events   <span><EventForm newEvent={this.newEvent} createEvent={this.createEvent} modalOpen={this.state.modalOpen} handleClose={this.handleClose} user={this.props.user} /></span></h1>
         <br/>
+        <p>We encourage fans and vendors from all over the world to come together to enjoy these spectacular events. Please Login or SignUp to create an event to meetup with other fans or announce your location if you're a vendor!!!</p>
         <br/>
         <br/>
         <Card.Group>
-          {this.state.allEvents.map(event => <EventCard createUserEvent={this.createUserEvent} event={event} user={this.props.user} fetchEvents={this.fetchEvents}/>)}
+          {this.state.allEvents.map(event => <EventCard createUserEvent={this.createUserEvent} event={event} user={this.props.user} fetchEvents={this.fetchEvents} myEvents={this.props.myEvents}/>)}
         </Card.Group>
       </React.Fragment>
     )

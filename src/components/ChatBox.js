@@ -6,10 +6,10 @@ export default class ChatBox extends React.Component {
   render() {
     return (
       <React.Fragment>
+        <Header as='h3' dividing>
+          Chat It Up!
+        </Header>
         <Comment.Group>
-          <Header as='h3' dividing>
-            Chat It Up!
-          </Header>
           {this.props.comments.map(comment => {
             return (
               <React.Fragment>
@@ -23,13 +23,13 @@ export default class ChatBox extends React.Component {
               </React.Fragment>
             )
           })}
-          {this.props.user ?
-            <Form reply>
-              <Form.TextArea onChange={(e) => this.props.changeHandler(e.currentTarget.value, 'comment')}/>
-              <Button disabled={this.props.disabled} content='Add Reply' labelPosition='left' icon='edit' primary onClick={(e) => this.props.postComment(e,this.props.user.id, this.props.oneRace.id, this.props.user.username)}/>
-            </Form> : null }
         </Comment.Group>
-      </React.Fragment>
+        {this.props.user ?
+          <Form reply>
+            <Form.TextArea onChange={(e) => this.props.changeHandler(e.currentTarget.value, 'comment')}/>
+            <Button type='submit' disabled={this.props.disabled} content='Add Reply' labelPosition='left' icon='edit' primary onClick={(e) => this.props.postComment(e,this.props.user.id, this.props.oneRace.id, this.props.user.username)}/>
+          </Form> : null }
+        </React.Fragment>
     )
   }
 }

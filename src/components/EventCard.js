@@ -5,7 +5,8 @@ import { Card, Icon, Grid, Button } from 'semantic-ui-react'
 export default class EventCard extends React.Component {
 
   state = {
-    editEvent: false
+    editEvent: false,
+    show: false
   }
 
 
@@ -15,29 +16,40 @@ export default class EventCard extends React.Component {
     })
   }
 
+  componentDidMount(){
+    (this.props.myEvents.map(event => event.id).includes(this.props.event.id)) ? this.showAttendance() : null
+  }
+
   backEvent = () => {
     this.setState({
       editEvent: false
     })
   }
 
-  test = (e) => {
-    if(this.props.user) {
-    return <Button basic color='green' onClick={() => this.props.createUserEvent(this.props.user.id, this.props.event.id, this.props.event)}
-           >Attend</Button>
-    }else {
-      return null
+  handleClick=()=>{
+    if(this.state.show === false){
+      this.props.createUserEvent(this.props.user.id, this.props.event.id, this.props.event)
+      console.log('hit');
+      this.setState({show: true})
+    } else if (this.state.show === true) {
+      alert('This Event Has Already Been Added!')
     }
   }
 
+  showAttendance = () => {
+    if (this.state.show === false) {
+      this.setState({
+        show: true,
+      })
+    }
+  }
 
   render() {
-    const test = this.test()
     return(
       <React.Fragment>
         {this.state.editEvent ?
           <EditEventForm backEvent={this.backEvent} event={this.props.event} fetchEvents={this.props.fetchEvents}/> :
-          <Card>
+          <Card raised color='red'>
             <Card.Content header={this.props.event.name} />
             <Card.Content description={`Date: ${this.props.event.date}`} />
             <Card.Content description={`Race: ${this.props.event.race}`} />
@@ -52,7 +64,9 @@ export default class EventCard extends React.Component {
                 <Button basic color='dark blue' onClick={this.editEvent}>Edit</Button>
                 <Button basic color='red' onClick={(e) => this.deleteEvent(e)}>Delete</Button>
               </React.Fragment> : null}
-            {test}
+            {this.props.user ? <Button basic color='green' onClick={this.handleClick}>
+              {this.state.show ? 'Attending' : 'Attend'}
+            </Button> : null}
           </Card>}
       </React.Fragment>
     )

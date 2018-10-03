@@ -12,21 +12,24 @@ class RaceSchedule extends React.Component {
   render(){
     const { activeItem } = this.props.selectedRace
     return (
-          <Menu fluid vertical tabular>
-            <Menu.Item name='RACE SEASON'/>
-            <br/>
-            {this.props.races.map(race => {
-              return  (
-                <Link to={`/race/${race.id}`}>
-                  <Menu.Item
-                    name={race['name']}
-                    active={this.props.selectedRace === race['name']}
-                    onClick={(e) => this.handleItemClick(e)}/>
-                </Link>
-              )
-              })}
-            </Menu>
+      <React.Fragment>
+      <React.Fragment>
+        <h3 className='Race Title'>2018 Race Season</h3>
+      </React.Fragment>
+      <Menu fluid vertical tabular>
+          {this.props.races.map(race => {
+            return  (
+              <Link to={`/race/${race.id}`}>
+                <Menu.Item
+                  name={race['name']}
+                  active={activeItem === race['name']}
+                  onClick={(e) => this.handleItemClick(e)}/>
+              </Link>
             )
+          })}
+      </Menu>
+      </React.Fragment>
+    )
   }
 }
 

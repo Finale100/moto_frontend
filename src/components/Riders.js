@@ -32,7 +32,7 @@ export default class Riders extends React.Component {
         <Card.Group>
           {this.state.allRiders.map(rider => {
             return (
-              <Card>
+              <Card raised color='red'>
                 <Image src={rider['img']} />
                 <Card.Content>
                   <Card.Header>{rider['name']}</Card.Header>

@@ -30,7 +30,6 @@ state = {
     return (
       <React.Fragment>
         <Menu pointing secondary>
-          <Menu.Item name='Moto Moto'/>
           <Menu.Item
             name='home'
             active={this.props.activeItem === 'home'}
@@ -51,6 +50,7 @@ state = {
             to='/riders'
             onClick={this.props.handleItemClick}
           />
+          <Menu.Item className='navbar name'  style={{color:'SEAGREEN', marginLeft: '35%'}} name='摩托 摩托'/>
           { this.props.user ?
             <React.Fragment>
               <Modal

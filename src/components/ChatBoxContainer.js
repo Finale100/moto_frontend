@@ -42,7 +42,6 @@ export default class Chatbox extends React.Component {
   }
 
   postComment = (e, user_id, race_id, username) => {
-    debugger
     fetch('http://localhost:3000/comments', {
       method: 'POST',
       headers: {

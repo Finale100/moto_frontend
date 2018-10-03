@@ -93,7 +93,7 @@ class App extends Component {
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",
-        Accept: 'application/json',
+         Accept: 'application/json',
         'Authorization': `Bearer ${localStorage.getItem("token")}`
       },
       body: JSON.stringify({
@@ -124,7 +124,7 @@ class App extends Component {
             </Grid.Column>
             <Grid.Column width={12}>
               <Route exact path='/' component={HomeContainer}/>
-              <Route exact path='/events' render={() => <EventContainer user={this.state.user} updateMyEvents={this.updateMyEvents}/>}/>
+              <Route exact path='/events' render={() => <EventContainer user={this.state.user} updateMyEvents={this.updateMyEvents} myEvents={this.state.myEvents}/>}/>
               <Route exact path='/riders' component={RidersContainer}/>
               <Route exact path='/register' render={() => <SignUp updateUser={this.updateUser}/>}/>
               <Route exact path='/myevents' render={() => <MyEventsContainer myEvents={this.state.myEvents} leaveEvent={this.leaveEvent}/>}/>
