@@ -25,7 +25,7 @@ export default class Leaderboard extends React.Component {
     <Grid.Column width={6} >
       <br/>
       <br/>
-      <Segment color='red' raised style={{paddingLeft: '80px', width: '425px'}}>
+      <Segment color='red' raised style={{paddingLeft: '25px'}}>
         <Table basic='very' celled collapsing>
           <Table.Header>
             <Table.Row><h3>2018 MotoGP Leaderboard</h3></Table.Row>

@@ -50,7 +50,7 @@ state = {
             to='/riders'
             onClick={this.props.handleItemClick}
           />
-          <Menu.Item className='navbar name'  style={{color:'SEAGREEN', marginLeft: '35%'}} name='摩托 摩托'/>
+          <Menu.Item className='navbar name'  style={{color:'crimson', marginLeft: '30%', fontSize: '25px'}} name='摩托 摩托'/>
           { this.props.user ?
             <React.Fragment>
               <Modal

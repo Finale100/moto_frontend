@@ -61,7 +61,7 @@ export default class EditEventForm extends React.Component {
             <label>What To Bring:</label>
             <input value={this.state.list} onChange={(e) => this.changeHandler(e.currentTarget.value, 'list')}/>
           </Form.Field>
-          <div className= 'mierda'>
+          <div className='edit form buttons'>
             <Icon name='undo alternate' size='big' onClick={this.props.backEvent}/>
             <Icon name='check' size='big' color='green' onClick={(e) => this.editEvent(e)}/>
           </div>

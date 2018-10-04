@@ -29,16 +29,16 @@ export default class RaceDetail extends React.Component {
               <Grid.Column width={9} floated='left'>
                 <Carousel>
                   <div className='pic'>
-                    <img src={oneRace.img} rounded/>
+                    <img src={oneRace.img} style={{borderRadius: '25px'}}/>
                   </div>
                   <div className='pic'>
-                    <img src={oneRace.img2} rounded/>
+                    <img src={oneRace.img2} style={{borderRadius: '25px'}}/>
                   </div>
                   <div className='pic'>
-                    <img src={oneRace.img3} rounded/>
+                    <img src={oneRace.img3} style={{borderRadius: '25px'}}/>
                   </div>
                   <div className='pic'>
-                    <img src={oneRace.img4} rounded/>
+                    <img src={oneRace.img4} style={{borderRadius: '25px'}}/>
                   </div>
                 </Carousel>
               </Grid.Column>

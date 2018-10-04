@@ -17,7 +17,6 @@ export default class EventCard extends React.Component {
   }
 
   componentDidMount(){
-    (this.props.myEvents.map(event => event.id).includes(this.props.event.id)) ? this.showAttendance() : null
   }
 
   backEvent = () => {
@@ -45,6 +44,9 @@ export default class EventCard extends React.Component {
   }
 
   render() {
+    if (this.props.myEvents) {
+      (this.props.myEvents.map(event => event.id).includes(this.props.event.id)) ? this.showAttendance() : null
+    }
     return(
       <React.Fragment>
         {this.state.editEvent ?
