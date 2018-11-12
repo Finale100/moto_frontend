@@ -12,11 +12,9 @@ export default class FeaturedRace extends React.Component {
           <Header as='h2'>Featured Race</Header>
 
           <Segment raised color='red'>
-            <Image src='https://2yrh403fk8vd1hz9ro2n46dd-wpengine.netdna-ssl.com/wp-content/uploads/2017/09/2017-aragon-motogp-results-1.jpg' size='large' centered rounded/>
-              <br/>
-              MotoGP Aragon will be held on Sunday, September 23 at 1pm.
-              Before that, practices one and two take place on Friday, September 21 at 8.55am and 1.05pm respectively.
-              Practice three will begin at 8.55am on Saturday, September 22 before the battle for pole begins at 1.10pm with qualifying.
+            <Image src='https://cdn.autobild.es/sites/navi.axelspringer.es/public/styles/gallery_big/public/media/image/2017/11/marc-marquez-andrea-dovizioso-hacen-foto-batalla-final-motogp_0.jpg' size='large' style={{paddingRight: '5%'}} centered rounded/>
+            <br/>
+            The final race of the MotoGP season comes to you this Sunday November 18, 2018. 2018 has broken records, tested limits, reset the boundaries and rewritten some history. We end the season with a seven-time World Champion, some of the closest races and podiums in history, and another incredible highlights reel of this spectacular season. But it’s not over yet – there’s one more weekend to race. The season has been quite an exciting one but with many riders changing teams, 2019 will be even wilder!
             </Segment>
         </React.Fragment>
     )

@@ -11,7 +11,7 @@ export default class Riders extends React.Component {
   }
 
   fetchRiders = () => {
-    fetch("http://localhost:3000/riders")
+    fetch("https://moto-moto-api.herokuapp.com/riders")
     .then(r => r.json())
     .then(rider => {
       this.setState({

@@ -11,7 +11,7 @@ export default class Event extends React.Component {
   }
 
   fetchEvents = () => {
-    fetch("http://localhost:3000/events")
+    fetch("https://moto-moto-api.herokuapp.com/events")
     .then(response => response.json())
     .then(event => {
       this.setState({
@@ -21,7 +21,7 @@ export default class Event extends React.Component {
   }
 
   createEvent = (e) => {
-    fetch('http://localhost:3000/events', {
+    fetch('https://moto-moto-api.herokuapp.com/events', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
@@ -44,7 +44,7 @@ export default class Event extends React.Component {
   }
 
   createUserEvent = (user_id, event_id, event) => {
-    fetch('http://localhost:3000/user_events', {
+    fetch('https://moto-moto-api.herokuapp.com/user_events', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"

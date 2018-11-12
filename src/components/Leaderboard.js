@@ -7,7 +7,7 @@ export default class Leaderboard extends React.Component {
   }
 
   fetchRiders = () => {
-    fetch('http://localhost:3000/riders')
+    fetch('https://moto-moto-api.herokuapp.com/riders')
     .then(response => response.json())
     .then(riders => {
       this.setState({
