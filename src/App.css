@@ -83,7 +83,6 @@ i.icon.check:before {
 .item:hover {opacity: 1}
 
 .ui.fluid.vertical.tabular.menu {
-  overflow: auto;
   height: 900px;
 }
 
@@ -95,12 +94,7 @@ i.icon.check:before {
   text-decoration-color: #87cefa;
 }
 
-/* .home.page.info {
-  font-family: 'Old Standard TT', serif;
-} */
-
 .ui.grid {
-  overflow: auto;
   height: 900px;
 }
 
