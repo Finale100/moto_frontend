@@ -19,7 +19,7 @@ class Login extends React.Component {
   e.preventDefault()
   this.props.handleClose()
   this.props.history.push("/")
-  fetch('http://localhost:3000/login', {
+  fetch('https://moto-moto-api.herokuapp.com/login', {
     method: "POST",
     headers: {
       'Content-Type': 'application/json',

@@ -29,7 +29,7 @@ export default class UserEditForm extends React.Component {
 
   editUser = (e) => {
     const id = e.currentTarget.form[0].value
-    fetch(`http://localhost:3000/users/${id}`, {
+    fetch(`https://moto-moto-api.herokuapp.com/users/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -50,7 +50,7 @@ export default class UserEditForm extends React.Component {
 
   deleteUser = (e) => {
     const id = e.currentTarget.form[0].value
-    fetch(`http://localhost:3000/users/${id}`, {
+    fetch(`https://moto-moto-api.herokuapp.com/users/${id}`, {
       method: "DELETE"
     })
     this.props.handleLogout()

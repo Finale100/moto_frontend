@@ -33,7 +33,7 @@ class App extends Component {
   }
 
   fetchRaces = () => {
-    fetch('http://localhost:3000/races')
+    fetch('https://moto-moto-api.herokuapp.com/races')
     .then(response => response.json())
     .then(races => {
       this.setState({
@@ -43,7 +43,7 @@ class App extends Component {
   }
 
   fetchUser = () => {
-    fetch('http://localhost:3000/profile', {
+    fetch('https://moto-moto-api.herokuapp.com/profile', {
       method: 'GET',
       headers: {
         'Authorization': `Bearer ${localStorage.getItem("token")}`
@@ -90,7 +90,7 @@ class App extends Component {
     this.setState({
       myEvents: newEvents
     })
-    fetch('http://localhost:3000/delete_event',{
+    fetch('https://moto-moto-api.herokuapp.com/delete_event',{
       method: "DELETE",
       headers: {
         "Content-Type": "application/json",

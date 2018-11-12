@@ -20,7 +20,7 @@ export default class EditEventForm extends React.Component {
 
   editEvent = (e) => {
     const id = this.props.event.id
-    fetch(`http://localhost:3000/events/${id}`, {
+    fetch(`https://moto-moto-api.herokuapp.com/events/${id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

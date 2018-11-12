@@ -23,10 +23,10 @@ export default class RaceDetail extends React.Component {
             <br/>
             <br/>
             <Grid>
-              <Grid.Column width={3}>
+              <Grid.Column width={4}>
                 <ChatBoxContainer user={this.props.user} oneRace={oneRace}/>
               </Grid.Column>
-              <Grid.Column width={9} floated='left'>
+              <Grid.Column width={8} floated='right' style={{paddingLeft: "100px"}}>
                 <Carousel>
                   <div className='pic'>
                     <img src={oneRace.img} style={{borderRadius: '25px'}}/>

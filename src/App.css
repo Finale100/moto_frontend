@@ -2,11 +2,6 @@
   text-align: center;
 }
 
-body {
-  background: ivory;
-  font-family: 'Russo One', sans-serif;
-}
-
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -42,7 +37,7 @@ i.icon.check:before {
 
 .pic {
   height: auto;
-  max-width: 100%;
+  max-width: 85%;
   text-align: center;
 }
 
@@ -57,6 +52,7 @@ i.icon.check:before {
   color: #FFF;
   font-family: Palatino;
   background-image: URL('https://www.mementoexclusives.com/images/detailed/9/motogp_memorabilia_category_banner.jpg');
+  border-radius: 25px;
 }
 
 .carousel .slide {
@@ -99,18 +95,15 @@ i.icon.check:before {
   text-decoration-color: #87cefa;
 }
 
-.home.page.info {
+/* .home.page.info {
   font-family: 'Old Standard TT', serif;
-}
+} */
 
 .ui.grid {
   overflow: auto;
   height: 900px;
 }
 
-.ui.header {
-  font-family: 'Old Standard TT', serif;
-}
 
 .ui.pointing.secondary.menu {
   background: slategrey;
@@ -118,4 +111,9 @@ i.icon.check:before {
 
 .ui.red.segment {
   padding-left: 80px;
+}
+
+.ui.red.raised.segment {
+  text-align: center;
+  padding-right: 13%;
 }

@@ -26,7 +26,7 @@ class SignUp extends React.Component {
 
   register = (e, state ) => {
     this.props.history.push("/")
-    fetch('http://localhost:3000/users', {
+    fetch('https://moto-moto-api.herokuapp.com/users', {
       method: 'POST',
       headers: {
       "Content-Type": "application/json",

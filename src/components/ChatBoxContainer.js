@@ -20,7 +20,7 @@ export default class Chatbox extends React.Component {
 
   fetchComments = () => {
     let id = this.props.oneRace.id
-    fetch(`http://localhost:3000/races/${id}`)
+    fetch(`https://moto-moto-api.herokuapp.com/races/${id}`)
     .then(r => r.json())
     .then(race => {
       this.setState({
@@ -42,7 +42,7 @@ export default class Chatbox extends React.Component {
   }
 
   postComment = (e, user_id, race_id, username) => {
-    fetch('http://localhost:3000/comments', {
+    fetch('https://moto-moto-api.herokuapp.com/comments', {
       method: 'POST',
       headers: {
         "Content-Type": "application/json"
