@@ -7,7 +7,7 @@ export default class ChatBox extends React.Component {
     return (
       <React.Fragment>
         <Segment>
-          <Header as='h3' dividing>
+          <Header as='h3' dividing color='red'>
             Chat It Up!
           </Header>
           <Comment.Group>

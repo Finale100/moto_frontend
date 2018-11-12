@@ -27,6 +27,11 @@
   to { transform: rotate(360deg); }
 }
 
+@viewport {
+  width: device-width ;
+  zoom: 1.0 ;
+}
+
 .edit.form.buttons {
   text-align: center;
 }
@@ -105,6 +110,7 @@ i.icon.check:before {
 
 .ui.red.segment {
   padding-left: 80px;
+
 }
 
 .ui.red.raised.segment {

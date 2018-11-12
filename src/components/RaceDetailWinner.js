@@ -5,7 +5,7 @@ import { Header, Image, Table, Grid, Segment } from 'semantic-ui-react'
 export default class RaceDetailWinner extends React.Component {
   render() {
     return (
-      <Segment color='red' style={{paddingRight: '15px'}}>
+      <Segment >
         <Table basic='very' >
           <Table.Header>
             <Table.Row>
